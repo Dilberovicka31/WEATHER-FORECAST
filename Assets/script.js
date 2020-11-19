@@ -1,3 +1,25 @@
+var apiKey = "bb097bc0ef72343cff93dc70db113b3e";
+var search = $("#searchCity");
+var searchButton = $("#searchBtn");
+
+var listOfCities = [];
+searchButton.click(function(event) {
+    event.preventDefault();
+    search.val();
+    if (search != "") {
+        
+        }else{
+            $("#error").html("You have to put in the city to search");
+        }
+    
+});
+
+function getWeather(){
+    
+}
+
+
+
 // Search to input the city 
 
 // WHEN the user clicks the search btn
