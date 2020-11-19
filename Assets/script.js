@@ -1,12 +1,17 @@
 var apiKey = "bb097bc0ef72343cff93dc70db113b3e";
-var search = $("#searchCity");
+var searchResult;
+var searchEl = $("#searchCity");
+
 var searchButton = $("#searchBtn");
 
 var listOfCities = [];
+
 searchButton.click(function(event) {
     event.preventDefault();
-    search.val();
-    if (search != "") {
+    var searchResult = searchEl.val();
+    console.log(searchResult);
+    if (searchResult != "") {
+    getWeather(searchResult);
         
         }else{
             $("#error").html("You have to put in the city to search");
@@ -14,7 +19,14 @@ searchButton.click(function(event) {
     
 });
 
-function getWeather(){
+function getWeather(searchOption){
+    $.ajax({
+        url: "http://api.openweathermap.org/data/2.5/forecast?q=" + searchOption + "&appid=" + apiKey,
+        method: "GET"
+      }).then(function(response) {
+        console.log(response);
+        console.log(response.Runtime);
+      });
     
 }
 
