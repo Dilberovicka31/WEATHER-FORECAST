@@ -1,10 +1,16 @@
 var apiKey = "bb097bc0ef72343cff93dc70db113b3e";
 var searchResult;
 var searchEl = $("#searchCity");
+var temperature = $(".card-text");
+var humidity = $(".card-text");
+var windSpeed = $("card-text");
+
 
 var searchButton = $("#searchBtn");
 
 var listOfCities = [];
+var cityList = $(".lists");
+var cities = $("<button>");
 
 searchButton.click(function(event) {
     event.preventDefault();
@@ -15,6 +21,7 @@ searchButton.click(function(event) {
         
         }else{
             $("#error").html("You have to put in the city to search");
+            
         }
     
 });
@@ -25,9 +32,21 @@ function getWeather(searchOption){
         method: "GET"
       }).then(function(response) {
         console.log(response);
-        console.log(response.Runtime);
+        // console.log(response.Runtime);
+
+        var citiesDiv = $("<div class='cities'>");
+        var city = response.city.name;
+        var citiesEl = $("<button>").text(city);
+        citiesDiv.append(citiesEl);
+       
+
+        
+
       });
-    
+    getWeather(searchResult);
+}
+function appendCities() {
+    citi
 }
 
 
