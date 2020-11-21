@@ -45,21 +45,26 @@ function getWeather(searchOption){
         var windSpeed = (response.list[0].wind.speed);
         $(".card-wind").text("Wind Speed: " + windSpeed);
 
+        var dayOne = (response.list[1].main.temperatureF);
+        $(".card-d1").text(dayOne);
+        console.log(dayOne);
+
         // url: "http://api.openweathermap.org/data/2.5/forecast?q=" + searchOption + "&appid=" + apiKey,
         // var uvIndex = "api.openweathermap.org/data/2.5/uvi?lat=" searchOption.coord.lat + '&lon=' + searchOption.coord.lon + '&appid=' + APIKey;
         
-        $.ajax({
-            url: "api.openweathermap.org/data/2.5/uvi?lat=" + response.coord.lat + '&lon=' + response.coord.lon + '&appid=' + apiKey,
-            method: "GET"
-        }).then(function(response) {
+        // $.ajax({
+        //     url: "api.openweathermap.org/data/2.5/uvi?lat=" + response.coord.lat + '&lon=' + response.coord.lon + '&appid=' + apiKey,
+        //     method: "GET"
+        // }).then(function(response) {
 
-            // var uvIndex = (respon)
-        })
+        //     // var uvIndex = (respon)
+        // })
         
 
       });
     
 }
+
 
 
 

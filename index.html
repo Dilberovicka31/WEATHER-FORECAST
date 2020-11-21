@@ -9,7 +9,7 @@
 </head>
 <body>
     <header class="jumbotron jumbotron-fluid text-center bg-dark text-white">
-        <div class="container">
+        <div class="container-">
           <h1 class="display-4">WEATHER DASHBOARD</h1>
           <!-- <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p> -->
         </div>
@@ -21,9 +21,10 @@
 
             <form class="input-group-append">
           
-              <input id="searchCity" class="form-control" type="search" placeholder="City Name"><br>
-              <span id="error"></span>
+              <input id="searchCity" class="form-control" type="search" placeholder="City Name">
+              
               <button type="submit" id="searchBtn" class="btn btn-primary mb-2">Search</button>
+              <span class="" id="error"></span>
               <!-- <button class="lists"></button> -->
             </form>
 
@@ -42,8 +43,26 @@
             <p class="card-uv">UV Index :</p>
           </div>
         </div>
-        <div class="card">5 Day Forecast</div>
+
+    <div class="container-fluid">
+      <div class="col- bg-light">
+          <h2 class="card-title"> 5 Day Forecast</h2>
       </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+         <!-- <div class="card"> -->
+           <p id="day1" class="col-sm-2 bg-primary mr-1">Day 1</p>
+           <p id="day2" class="col-sm-2 bg-primary mr-1">Day 2</p>
+           <p id="day3" class="col-sm-2 bg-primary mr-1">Day 3</p>
+           <p id="day4" class="col-sm-2 bg-primary mr-1">Day 4</p>
+           <p id="day5" class="col-sm-2 bg-primary">Day 5</p>
+         </div>
+        </div>
+      </div>
+    </div>
+    
 
     </div>
     </div>
