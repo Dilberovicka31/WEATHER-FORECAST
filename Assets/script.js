@@ -43,7 +43,7 @@ function getWeather(searchOption){
         
 
       });
-    getWeather(searchResult);
+    // getWeather(searchResult);
 }
 function appendCities() {
     citi
