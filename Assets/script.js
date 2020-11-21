@@ -1,11 +1,6 @@
 var apiKey = "bb097bc0ef72343cff93dc70db113b3e";
 var searchResult;
 var searchEl = $("#searchCity");
-var temperature = $(".card-text");
-var humidity = $(".card-text");
-var windSpeed = $("card-text");
-
-
 var searchButton = $("#searchBtn");
 
 var listOfCities = [];
@@ -38,15 +33,32 @@ function getWeather(searchOption){
         var city = response.city.name;
         var citiesEl = $("<button>").text(city);
         citiesDiv.append(citiesEl);
+        console.log(citiesDiv);
        
+        var temperatureF = (response.list[0].main.temp - 273.15) * 1.80 + 32;
+        $(".card-temp").text('Temperature: ' + temperatureF.toFixed(0) + '°F');
+        console.log(temperatureF);
 
+        var humidityEl =(response.list[0].main.humidity);
+        $(".card-hum").text("Humidity: " + humidityEl);
+
+        var windSpeed = (response.list[0].wind.speed);
+        $(".card-wind").text("Wind Speed: " + windSpeed);
+
+        // url: "http://api.openweathermap.org/data/2.5/forecast?q=" + searchOption + "&appid=" + apiKey,
+        // var uvIndex = "api.openweathermap.org/data/2.5/uvi?lat=" searchOption.coord.lat + '&lon=' + searchOption.coord.lon + '&appid=' + APIKey;
+        
+        $.ajax({
+            url: "api.openweathermap.org/data/2.5/uvi?lat=" + response.coord.lat + '&lon=' + response.coord.lon + '&appid=' + apiKey,
+            method: "GET"
+        }).then(function(response) {
+
+            // var uvIndex = (respon)
+        })
         
 
       });
-    // getWeather(searchResult);
-}
-function appendCities() {
-    citi
+    
 }
 
 
