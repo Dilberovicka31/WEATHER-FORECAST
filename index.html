@@ -33,7 +33,10 @@
       <div class="col-md-9 col-lg-9 bg-white border">
         <div class="card bg-light  mb-3">
           <div class="card-header">
-            <h2 class="card-title"></h2>
+            <h2 id="city-date" class="card-title"></h2>
+            <p id="currentDate"></p>
+            <p id="img"></p>
+
           </div>
           <div class="card-body">
             
@@ -43,29 +46,30 @@
             <p class="card-uv">UV Index :</p>
           </div>
         </div>
+        
 
     <div class="container-fluid">
       <div class="col- bg-light">
-          <h2 class="card-title"> 5 Day Forecast</h2>
+          <h2 id="forecast" class="card-title"> 5 Day Forecast</h2>
       </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container d-flex">
       <div class="row">
-         <!-- <div class="card"> -->
-           <p id="day1" class="col-sm-2 bg-primary mr-1">Day 1</p>
-           <p id="day2" class="col-sm-2 bg-primary mr-1">Day 2</p>
-           <p id="day3" class="col-sm-2 bg-primary mr-1">Day 3</p>
-           <p id="day4" class="col-sm-2 bg-primary mr-1">Day 4</p>
-           <p id="day5" class="col-sm-2 bg-primary">Day 5</p>
+
+      <div id="day1" class="col mr-2 bg-primary"></div>
+      <div id="day2" class="col mr-2 bg-primary"></div>
+      <div id="day3" class="col mr-2 bg-primary"></div>
+      <div id="day4" class="col mr-2 bg-primary"></div>
+      <div id="day5" class="col bg-primary"></div>
+           
          </div>
         </div>
       </div>
     </div>
+        
     
-
-    </div>
-    </div>
+    
     
         
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
