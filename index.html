@@ -16,56 +16,89 @@
       </header>
       <div class="container-fluid">
         <div class="row">
+        
           <div class="col-md-6 bg-light col-lg-3">
-            <h5 class="">Search for a city</h5>
+            <h5 class="ml-3">Search for a city</h5>
 
-            <form class="input-group-append">
+            <form class="input-group-append ml-3">
           
               <input id="searchCity" class="form-control" type="search" placeholder="City Name">
               
               <button type="submit" id="searchBtn" class="btn btn-primary mb-2">Search</button>
-              <span class="" id="error"></span>
-              <!-- <button class="lists"></button> -->
+              
+             
             </form>
-
+            <div id="cities-list" class="container-fluid">
+            
            </div>
-
-      <div class="col-md-9 col-lg-9 bg-white border">
-        <div class="card bg-light  mb-3">
+         
+          </div>
+          
+        <div class="col-lg-9 bg-white border">
+          
           <div class="card-header">
             <h2 id="city-date" class="card-title"></h2>
             <p id="currentDate"></p>
             <p id="img"></p>
 
-          </div>
+          
           <div class="card-body">
             
             <p class="card-temp">Temperature :</p>
             <p class="card-hum">Humidity :</p>
             <p class="card-wind">Wind Speed :</p>
-            <p class="card-uv">UV Index :</p>
+            <p class="card-uv">UV Index :<span id="uv-index"></span></p>
           </div>
         </div>
         
 
-    <div class="container-fluid">
-      <div class="col- bg-light">
+      <div class="col-9 bg-light">
           <h2 id="forecast" class="card-title"> 5 Day Forecast</h2>
+      
+   
+
+    
+      <div class="card-container row justify-content-center">
+
+      <div id="day1" class="card mr-4 bg-primary">
+        <div class="card-body">
+          <p class="card-date1"></p>
+          <p class="card-temp1"></p>
+          <p class="card-hum1"></p>
+        </div>
       </div>
-    </div>
-
-    <div class="container d-flex">
-      <div class="row">
-
-      <div id="day1" class="col mr-2 bg-primary"></div>
-      <div id="day2" class="col mr-2 bg-primary"></div>
-      <div id="day3" class="col mr-2 bg-primary"></div>
-      <div id="day4" class="col mr-2 bg-primary"></div>
-      <div id="day5" class="col bg-primary"></div>
+      <div id="day2" class="card mr-4 bg-primary">
+        <div class="card-body">
+        <p class="card-date2"></p>
+          <p class="card-temp2"></p>
+          <p class="card-hum2"></p>
+        </div>
+      </div>
+      <div id="day3" class="card mr-4 bg-primary">
+        <div class="card-body">
+        <p class="card-date3"></p>
+          <p class="card-temp3"></p>
+          <p class="card-hum3"></p>
+        </div>
+      </div>
+      <div id="day4" class="card mt-4 mr-4 bg-primary">
+        <div class="card-body">
+        <p class="card-date4"></p>
+          <p class="card-temp4"></p>
+          <p class="card-hum4"></p>
+        </div>
+      </div>
+      <div id="day5" class="card mt-4 bg-primary">
+        <div class="card-body">
+        <p class="card-date5"></p>
+          <p class="card-temp5"></p>
+          <p class="card-hum5"></p>
+        </div>
+      </div>
            
          </div>
         </div>
-      </div>
+        </div>
     </div>
         
     
@@ -73,6 +106,7 @@
     
         
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
          <script src="./Assets/script.js"></script>
 </body>
 </html>

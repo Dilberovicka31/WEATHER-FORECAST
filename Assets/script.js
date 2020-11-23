@@ -5,7 +5,7 @@ var searchResult;
 var searchEl = $("#searchCity");
 var searchButton = $("#searchBtn");
 
-var listOfCities = [];
+
 var cityList = $(".lists");
 var cities = $("<button>");
 
@@ -21,6 +21,14 @@ searchButton.click(function(event) {
             
         }
     
+    var data = JSON.parse (localStorage.getItem("cities"));
+   
+    data.push(searchResult);
+    console.log(data);
+    localStorage.setItem("cities", JSON.stringify( data));
+
+    
+
 });
 
 function getWeather(searchOption){
@@ -31,17 +39,16 @@ function getWeather(searchOption){
         console.log(response);
         // console.log(response.Runtime);
 
-        var citiesDiv = $("<div class='cities'>");
-        var city = response.city.name;
-        var citiesEl = $("<button>").text(city);
-        citiesDiv.append(citiesEl);
-        console.log(citiesDiv);
-
+        //Get the weather icon
+        var icon = (response.list[0].weather[0].icon);
+        iconURL = ($("<img>").attr ("src" + "http://openweathermap.org/img/w/" + icon + ".png" ));
         // Display city name
         var cityName = (response.city.name);
-        var date = (response.list[0].dt_txt);
-        var icon = (response.list[0].weather[0].icon);
-        $("#city-date").text(cityName, date, icon);
+        var date = moment().format("MM/DD/YYYY");
+        console.log(date);
+        
+        $("#city-date").text(cityName + date  );
+        $("#city-date").append(icon);
         
         //Temperature
         var temperatureF = (response.list[0].main.temp - 273.15) * 1.80 + 32;
@@ -58,39 +65,58 @@ function getWeather(searchOption){
 
         //5 Day forecast - day 1
         var tempDay1 = (response.list[1].main.temp - 273.15) * 1.80 + 32;
-        $("#day1").text('Temperature: ' + tempDay1.toFixed(0) + '°F');
+        var humDay1 = (response.list[1].main.humidity);
+        $(".card-temp1").text('Temperature: ' + tempDay1.toFixed(0) + '°F');
+        $(".card-hum1").text('Humidity: ' + humDay1 + "%");
 
         console.log(tempDay1);
 
-        var humDay1 = (response.list[1].main.humidity);
-        // tempDay1.text('Humidity: ' + humDay1 + "%");
+        var tempDay2 = (response.list[2].main.temp - 273.15) * 1.80 + 32;
+        var humDay2 = (response.list[2].main.humidity);
+        $(".card-temp2").text('Temperature: ' + tempDay2.toFixed(0) + '°F');
+        $(".card-hum2").text('Humidity: ' + humDay2 + "%");
 
-        var tempDay2 = (response.list[1].main.temp - 273.15) * 1.80 + 32;
-        $("#day2").text('Temperature: ' + tempDay2.toFixed(0) + '°F');
+        var tempDay3 = (response.list[3].main.temp - 273.15) * 1.80 + 32;
+        var humDay3 = (response.list[3].main.humidity);
+        $(".card-temp3").text('Temperature: ' + tempDay3.toFixed(0) + '°F');
+        $(".card-hum3").text('Humidity: ' + humDay3 + "%");
 
-        var tempDay3 = (response.list[2].main.temp - 273.15) * 1.80 + 32;
-        $("#day3").text('Temperature: ' + tempDay3.toFixed(0) + '°F');
+        var tempDay4 = (response.list[4].main.temp - 273.15) * 1.80 + 32;
+        var humDay4 = (response.list[4].main.humidity);
+        $(".card-temp4").text('Temperature: ' + tempDay4.toFixed(0) + '°F');
+        $(".card-hum4").text('Humidity: ' + humDay4 + "%");
 
-        var tempDay4 = (response.list[3].main.temp - 273.15) * 1.80 + 32;
-        $("#day4").text('Temperature: ' + tempDay4.toFixed(0) + '°F');
-
-        var tempDay5 = (response.list[4].main.temp - 273.15) * 1.80 + 32;
-        $("#day5").text('Temperature: ' + tempDay5.toFixed(0) + '°F');
+        var tempDay5 = (response.list[5].main.temp - 273.15) * 1.80 + 32;
+        var humDay5 = (response.list[5].main.humidity);
+        $(".card-temp5").text('Temperature: ' + tempDay5.toFixed(0) + '°F');
+        $(".card-hum5").text('Humidity: ' + humDay5 + "%");
       
         
-        // $.ajax({
-        //     url: "api.openweathermap.org/data/2.5/uvi?lat=" + response.coord.lat + '&lon=' + response.coord.lon + '&appid=' + apiKey,
-        //     method: "GET"
-        // }).then(function(response) {
-
-        //     // var uvIndex = (respon)
-        // })
+        $.ajax({
+            url: "https://api.openweathermap.org/data/2.5/uvi?lat=" + response.city.coord.lat + '&lon=' + response.city.coord.lon + '&appid=' + apiKey,
+            method: "GET"
+        }).then(function(uvIndexResponse) {
+            console.log(uvIndexResponse.value);
+           $("#uv-index").text( uvIndexResponse.value);
+           if(uvIndexResponse.value > 8){
+            $("#uv-index").css("background-color", "red");
+           }else if(uvIndexResponse.value > 6){
+            $("#uv-index").css("background-color", "orange");
+           }else if(uvIndexResponse.value > 3){
+            $("#uv-index").css("background-color", "yellow");
+           }else  {
+            $("#uv-index").css("background-color", "green");
+           }
+        })
         
 
       });
     
 }
 
+if(localStorage.getItem("cities") === null){
+    localStorage.setItem("cities", JSON.stringify([]));
+}
 
 
 
