@@ -18,11 +18,11 @@ Weather forecast displays current weather data and 5 day forecast. Search made s
 * Current temperature
 * Humidity
 * Wind Speed
-* UV index- with appropriate color for the index based on the value
+* UV index- with appropriate color that indicates whether the conditions are favorable, moderate or severe
 
 For 5 day forecast you get the following:
 * Date
 * Temperature
 * Humidity
 
-All data is saved to the localStorage, and the last searched city is displayed in the search history. 
+All data is saved to the localStorage, and the last searched city is displayed in the search history. If the user clicks on the previously searched city, then he is presented with the current and future condition for that city. 
