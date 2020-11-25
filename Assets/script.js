@@ -10,7 +10,7 @@ var cities = $("#listCity");
 searchButton.click(function(event) {
     event.preventDefault();
     var searchResult = searchEl.val();
-    $("#listCity").append("<button type=button>" + searchResult).addClass("btn btn-outline-secondary");
+    $("#listCity").append("<button type=button>" + searchResult);
     if (!("#listCity").includes(searchResult)){
         
        
@@ -86,6 +86,9 @@ function getWeather(searchOption){
         var tempDay1 = (response.list[1].main.temp - 273.15) * 1.80 + 32;
         var humDay1 = (response.list[1].main.humidity);
         $(".card-date1").text(day1);
+        var iconResponse = response.list[1].weather[0].icon;
+        iconURL = "http://openweathermap.org/img/w/" + iconResponse + ".png" ;
+        $("#icon1").attr("src", iconURL).css("display","block");
         $(".card-temp1").text('Temperature: ' + tempDay1.toFixed(0) + '°F');
         $(".card-hum1").text('Humidity: ' + humDay1 + "%");
 
@@ -95,6 +98,9 @@ function getWeather(searchOption){
         var tempDay2 = (response.list[2].main.temp - 273.15) * 1.80 + 32;
         var humDay2 = (response.list[2].main.humidity);
         $(".card-date2").text(day2);
+        var iconResponse = response.list[2].weather[0].icon;
+        iconURL = "http://openweathermap.org/img/w/" + iconResponse + ".png" ;
+        $("#icon2").attr("src", iconURL).css("display","block");
         $(".card-temp2").text('Temperature: ' + tempDay2.toFixed(0) + '°F');
         $(".card-hum2").text('Humidity: ' + humDay2 + "%");
 
@@ -102,6 +108,9 @@ function getWeather(searchOption){
         var tempDay3 = (response.list[3].main.temp - 273.15) * 1.80 + 32;
         var humDay3 = (response.list[3].main.humidity);
         $(".card-date3").text(day3);
+        var iconResponse = response.list[3].weather[0].icon;
+        iconURL = "http://openweathermap.org/img/w/" + iconResponse + ".png" ;
+        $("#icon3").attr("src", iconURL).css("display","block");
         $(".card-temp3").text('Temperature: ' + tempDay3.toFixed(0) + '°F');
         $(".card-hum3").text('Humidity: ' + humDay3 + "%");
 
@@ -109,6 +118,9 @@ function getWeather(searchOption){
         var tempDay4 = (response.list[4].main.temp - 273.15) * 1.80 + 32;
         var humDay4 = (response.list[4].main.humidity);
         $(".card-date4").text(day4);
+        var iconResponse = response.list[4].weather[0].icon;
+        iconURL = "http://openweathermap.org/img/w/" + iconResponse + ".png" ;
+        $("#icon4").attr("src", iconURL).css("display","block");
         $(".card-temp4").text('Temperature: ' + tempDay4.toFixed(0) + '°F');
         $(".card-hum4").text('Humidity: ' + humDay4 + "%");
 
@@ -116,6 +128,9 @@ function getWeather(searchOption){
         var tempDay5 = (response.list[5].main.temp - 273.15) * 1.80 + 32;
         var humDay5 = (response.list[5].main.humidity);
         $(".card-date5").text(day5);
+        var iconResponse = response.list[5].weather[0].icon;
+        iconURL = "http://openweathermap.org/img/w/" + iconResponse + ".png" ;
+        $("#icon5").attr("src", iconURL).css("display","block");
         $(".card-temp5").text('Temperature: ' + tempDay5.toFixed(0) + '°F');
         $(".card-hum5").text('Humidity: ' + humDay5 + "%");
       
