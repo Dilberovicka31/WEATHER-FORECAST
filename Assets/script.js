@@ -9,18 +9,14 @@ var cities = $("#listCity");
 //When clicked on search button render data
 searchButton.click(function(event) {
     event.preventDefault();
-    var searchResult = searchEl.val();
-    $("#listCity").append("<button type=button>" + searchResult);
-    if (!("#listCity").includes(searchResult)){
+    var searchResult = searchEl.val().toUpperCase();
+    cities.append(`<button type="button" class="btn btn btn-outline-secondary btn-lg btn-block">`+searchResult+`</button>` );
+    
+    if (!(cities).includes(searchResult)){
+        // !$("#listCity").append(searchResult);
         
-       
-       
-        console.log(searchResult);
     };
    
-    
-    
-    console.log(searchResult);
     if (searchResult != "") {
     getWeather(searchResult);
         
