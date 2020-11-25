@@ -3,13 +3,23 @@ var searchResult;
 var searchEl = $("#searchCity");
 var searchButton = $("#searchBtn");
 var cityList = $(".lists");
-var cities = $("<button>");
+var cities = $("#listCity");
 
 
 //When clicked on search button render data
 searchButton.click(function(event) {
     event.preventDefault();
     var searchResult = searchEl.val();
+    $("#listCity").append("<button type=button>" + searchResult).addClass("btn btn-outline-secondary");
+    if (!("#listCity").includes(searchResult)){
+        
+       
+       
+        console.log(searchResult);
+    };
+   
+    
+    
     console.log(searchResult);
     if (searchResult != "") {
     getWeather(searchResult);
@@ -17,11 +27,12 @@ searchButton.click(function(event) {
         }
     //Getting all the searched cities to localstorage
     var data = JSON.parse (localStorage.getItem("cities"));
-   
-    data.push(searchResult);
     console.log(data);
+    if (!(data.includes(searchResult))) {
+        data.push(searchResult);
+    }
+    
     localStorage.setItem("cities", JSON.stringify( data));
-    // $("#list").append(data);
     
 
 });
@@ -30,23 +41,33 @@ searchButton.click(function(event) {
 //Setting function to get all the data and display it to html
 function getWeather(searchOption){
     $.ajax({
-        url: "http://api.openweathermap.org/data/2.5/forecast?q=" + searchOption + "&appid=" + apiKey,
+        url: "https://api.openweathermap.org/data/2.5/forecast?q=" + searchOption + "&appid=" + apiKey,
         method: "GET"
       }).then(function(response) {
         console.log(response);
         // console.log(response.Runtime);
 
-        //Get the weather icon
-        // var icon = (response.list[0].weather[0].icon);
-        // iconURL = ($("<img>").attr ("src" + "http://openweathermap.org/img/w/" + icon + ".png" ));
+        // Get the weather icon
+        var iconResponse = response.list[0].weather[0].icon;
+        iconURL = "http://openweathermap.org/img/w/" + iconResponse + ".png" ;
+        $("#icon").attr("src", iconURL).css("display","block");
+        
+        
         // // Display city name
         var cityName = (response.city.name);
+        var now = moment();
         var date = moment().format("MM/DD/YYYY");
+        var day1 = moment().add(1, "days").format("MM/DD/YYYY");
+        var day2 =  moment().add(2, "days").format("MM/DD/YYYY");
+        var day3 =  moment().add(3, "days").format("MM/DD/YYYY");
+        var day4 =  moment().add(4, "days").format("MM/DD/YYYY");
+        var day5 =  moment().add(5, "days").format("MM/DD/YYYY");
+        console.log(day1);
+
         console.log(date);
+        console.log(now);
         
-        $("#city-date").text(cityName + date  );
-        // $("#city-date").append(icon);
-        // console.log(icon);
+        $("#city-date").text(cityName + date );
         
         //Temperature
         var temperatureF = (response.list[0].main.temp - 273.15) * 1.80 + 32;
@@ -64,8 +85,7 @@ function getWeather(searchOption){
         //5 Day forecast - day 1
         var tempDay1 = (response.list[1].main.temp - 273.15) * 1.80 + 32;
         var humDay1 = (response.list[1].main.humidity);
-        var dateDay1 = (response.list[1].dt_txt)
-        $(".card-date1").text(dateDay1);
+        $(".card-date1").text(day1);
         $(".card-temp1").text('Temperature: ' + tempDay1.toFixed(0) + '°F');
         $(".card-hum1").text('Humidity: ' + humDay1 + "%");
 
@@ -74,32 +94,28 @@ function getWeather(searchOption){
         //Day 2 forecast
         var tempDay2 = (response.list[2].main.temp - 273.15) * 1.80 + 32;
         var humDay2 = (response.list[2].main.humidity);
-        var dateDay2 = (response.list[2].dt_txt)
-        $(".card-date2").text(dateDay2);
+        $(".card-date2").text(day2);
         $(".card-temp2").text('Temperature: ' + tempDay2.toFixed(0) + '°F');
         $(".card-hum2").text('Humidity: ' + humDay2 + "%");
 
         //Day 3 forecast
         var tempDay3 = (response.list[3].main.temp - 273.15) * 1.80 + 32;
         var humDay3 = (response.list[3].main.humidity);
-        var dateDay3 = (response.list[3].dt_txt)
-        $(".card-date3").text(dateDay3);
+        $(".card-date3").text(day3);
         $(".card-temp3").text('Temperature: ' + tempDay3.toFixed(0) + '°F');
         $(".card-hum3").text('Humidity: ' + humDay3 + "%");
 
         //Day 4 forecast
         var tempDay4 = (response.list[4].main.temp - 273.15) * 1.80 + 32;
         var humDay4 = (response.list[4].main.humidity);
-        var dateDay4 = (response.list[4].dt_txt)
-        $(".card-date4").text(dateDay4);
+        $(".card-date4").text(day4);
         $(".card-temp4").text('Temperature: ' + tempDay4.toFixed(0) + '°F');
         $(".card-hum4").text('Humidity: ' + humDay4 + "%");
 
         //Day 5 forecast
         var tempDay5 = (response.list[5].main.temp - 273.15) * 1.80 + 32;
         var humDay5 = (response.list[5].main.humidity);
-        var dateDay5 = (response.list[5].dt_txt)
-        $(".card-date5").text(dateDay5);
+        $(".card-date5").text(day5);
         $(".card-temp5").text('Temperature: ' + tempDay5.toFixed(0) + '°F');
         $(".card-hum5").text('Humidity: ' + humDay5 + "%");
       
