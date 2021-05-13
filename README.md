@@ -2,6 +2,9 @@
 
 Weather dashboard was created by retrieving data from Openweathermap.org and rendering it dynamically into HTML and running it in the browser. 
 
+## Deployed link
+ https://dilberovicka31.github.io/WEATHER-FORECAST/
+
 ## User Story
 
 ```
