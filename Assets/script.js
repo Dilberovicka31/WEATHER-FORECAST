@@ -1,7 +1,7 @@
 if (localStorage.getItem("cities") === null) {
   localStorage.setItem("cities", JSON.stringify([]));
 }
-var apiKey = "bb097bc0ef72343cff93dc70db113b3e";
+var apiKey = "8ce53fdfd325b16c0108ab0e0c0eb5c1";
 var searchResult;
 var searchEl = $("#searchCity");
 var searchButton = $("#searchBtn");
