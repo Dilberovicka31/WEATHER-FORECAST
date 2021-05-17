@@ -5,6 +5,10 @@ Weather dashboard was created by retrieving data from Openweathermap.org and ren
 ## Deployed link
  https://dilberovicka31.github.io/WEATHER-FORECAST/
 
+ ## Final product view
+
+ ![Weather Dashboard](./assets/Weather-Dashboard.png)
+
 ## User Story
 
 ```
