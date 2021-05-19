@@ -7,7 +7,7 @@ Weather dashboard was created by retrieving data from Openweathermap.org and ren
 
  ## Final product view
 
- ![Weather Dashboard](./assets/Weather-Dashboard.png)
+![Weather-Dashboard](https://user-images.githubusercontent.com/71347282/118853349-a99fce00-b8a1-11eb-8499-47c24443c6f3.png)
 
 ## User Story
 
