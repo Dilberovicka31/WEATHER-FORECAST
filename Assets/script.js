@@ -33,12 +33,12 @@ searchButton.click(function (event) {
   displayCities();
 });
 
-cities.on("click", ".cityItem", function () {
-  $(this).text();
+// cities.click("click", ".cityItem", function () {
+//   $(this).text();
 
-  console.log($(this).data("city"));
-  getWeather($(this).data("city"));
-});
+//   console.log($(this).data("city"));
+//   getWeather($(this).data("city"));
+// });
 
 //Setting function to get all the data and display it to html
 function getWeather(searchOption) {
@@ -178,6 +178,12 @@ function displayCities() {
         data-city="${resultCities[i]}">${resultCities[i]}</button>`
     );
   }
+  // add event listener to each button to get the city data
+  $(".cityItem").on("click", function () {
+    var city = $(this).attr("data-city");
+    getWeather(city);
+  }
+  );
 
   //   cities.each(() => {
   //     $(this).click(function () {
@@ -188,4 +194,7 @@ function displayCities() {
   //     });
   //   });
 }
+$("#something").click(function(event){
+  clearInterval()
+})
 displayCities();
