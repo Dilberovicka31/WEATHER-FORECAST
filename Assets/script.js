@@ -1,3 +1,4 @@
+//get cities from localstorage or if empty create an empty array
 if (localStorage.getItem("cities") === null) {
   localStorage.setItem("cities", JSON.stringify([]));
 }
@@ -32,13 +33,6 @@ searchButton.click(function (event) {
   localStorage.setItem("cities", JSON.stringify(data));
   displayCities();
 });
-
-// cities.click("click", ".cityItem", function () {
-//   $(this).text();
-
-//   console.log($(this).data("city"));
-//   getWeather($(this).data("city"));
-// });
 
 //Setting function to get all the data and display it to html
 function getWeather(searchOption) {
@@ -166,11 +160,7 @@ function displayCities() {
   console.log(resultCities);
   resultCities = resultCities.reverse();
   console.log(resultCities);
-  //   cities.append(
-  //     `<button type="button"
-  //     class="btn btn btn-outline-secondary btn-lg btn-block"
-  //     data-city="${resultCities[0]}">${resultCities[0]}</button>`
-  //   );
+
   for (let i = 0; i < resultCities.length; i++) {
     cities.append(
       `<button type="button" 
@@ -182,19 +172,7 @@ function displayCities() {
   $(".cityItem").on("click", function () {
     var city = $(this).attr("data-city");
     getWeather(city);
-  }
-  );
-
-  //   cities.each(() => {
-  //     $(this).click(function () {
-  //       console.log(this);
-  //       var targetCity = $(this).data("city");
-  //       console.log(targetCity);
-  //       getWeather(targetCity);
-  //     });
-  //   });
+  });
 }
-$("#something").click(function(event){
-  clearInterval()
-})
+
 displayCities();
